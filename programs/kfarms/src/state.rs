@@ -64,7 +64,7 @@ pub enum GlobalConfigOption {
 //     consts::SIZE_FARM_STATE,
 //     std::mem::size_of::<FarmState>() + 8
 // );
-#[account(zero_copy)]
+// #[account(zero_copy)]
 #[derive(Debug, Eq, PartialEq)]
 #[repr(C)]
 pub struct FarmState {
@@ -413,7 +413,7 @@ impl RewardScheduleCurve {
 //     consts::SIZE_USER_STATE,
 //     std::mem::size_of::<UserState>() + 8
 // );
-#[account(zero_copy)]
+// #[account(zero_copy)]
 #[derive(Debug, Eq, PartialEq)]
 pub struct UserState {
     pub user_id: u64,

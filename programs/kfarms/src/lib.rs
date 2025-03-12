@@ -1,13 +1,13 @@
 #![allow(clippy::result_large_err)]
 pub mod farm_operations;
-mod handlers;
+// mod handlers;
 pub mod stake_operations;
 pub mod state;
 mod token_operations;
 mod types;
 pub mod utils;
 
-use crate::handlers::*;
+// use crate::handlers::*;
 use anchor_lang::prelude::*;
 use decimal_wad::decimal::Decimal;
 use decimal_wad::error::DecimalError;
@@ -36,135 +36,135 @@ solana_security_txt::security_txt! {
 
 #[program]
 pub mod farms {
-    use super::*;
+    // use super::*;
 
-    pub fn initialize_global_config(ctx: Context<InitializeGlobalConfig>) -> Result<()> {
-        handler_initialize_global_config::process(ctx)
-    }
+    // pub fn initialize_global_config(ctx: Context<InitializeGlobalConfig>) -> Result<()> {
+    //     handler_initialize_global_config::process(ctx)
+    // }
 
-    pub fn update_global_config(
-        ctx: Context<UpdateGlobalConfig>,
-        mode: u8,
-        value: [u8; 32],
-    ) -> Result<()> {
-        let mode =
-            GlobalConfigOption::try_from(mode).map_err(|_| FarmError::InvalidGlobalConfigMode)?;
-        handler_update_global_config::process(ctx, mode, &value)
-    }
+    // pub fn update_global_config(
+    //     ctx: Context<UpdateGlobalConfig>,
+    //     mode: u8,
+    //     value: [u8; 32],
+    // ) -> Result<()> {
+    //     let mode =
+    //         GlobalConfigOption::try_from(mode).map_err(|_| FarmError::InvalidGlobalConfigMode)?;
+    //     handler_update_global_config::process(ctx, mode, &value)
+    // }
 
-    pub fn initialize_farm(ctx: Context<InitializeFarm>) -> Result<()> {
-        handler_initialize_farm::process(ctx)
-    }
+    // pub fn initialize_farm(ctx: Context<InitializeFarm>) -> Result<()> {
+    //     handler_initialize_farm::process(ctx)
+    // }
 
-    pub fn initialize_farm_delegated(ctx: Context<InitializeFarmDelegated>) -> Result<()> {
-        handler_initialize_farm_delegated::process(ctx)
-    }
+    // pub fn initialize_farm_delegated(ctx: Context<InitializeFarmDelegated>) -> Result<()> {
+    //     handler_initialize_farm_delegated::process(ctx)
+    // }
 
-    pub fn initialize_reward(ctx: Context<InitializeReward>) -> Result<()> {
-        handler_initialize_reward::process(ctx)
-    }
+    // pub fn initialize_reward(ctx: Context<InitializeReward>) -> Result<()> {
+    //     handler_initialize_reward::process(ctx)
+    // }
 
-    pub fn add_rewards(ctx: Context<AddReward>, amount: u64, reward_index: u64) -> Result<()> {
-        handler_add_reward::process(ctx, amount, reward_index)
-    }
+    // pub fn add_rewards(ctx: Context<AddReward>, amount: u64, reward_index: u64) -> Result<()> {
+    //     handler_add_reward::process(ctx, amount, reward_index)
+    // }
 
-    pub fn update_farm_config(
-        ctx: Context<UpdateFarmConfig>,
-        mode: u16,
-        data: Vec<u8>,
-    ) -> Result<()> {
-        handler_update_farm_config::process(ctx, mode, &data)
-    }
+    // pub fn update_farm_config(
+    //     ctx: Context<UpdateFarmConfig>,
+    //     mode: u16,
+    //     data: Vec<u8>,
+    // ) -> Result<()> {
+    //     handler_update_farm_config::process(ctx, mode, &data)
+    // }
 
-    pub fn initialize_user(ctx: Context<InitializeUser>) -> Result<()> {
-        handler_initialize_user::process(ctx)
-    }
+    // pub fn initialize_user(ctx: Context<InitializeUser>) -> Result<()> {
+    //     handler_initialize_user::process(ctx)
+    // }
 
-    pub fn transfer_ownership(ctx: Context<TransferOwnership>, new_owner: Pubkey) -> Result<()> {
-        handler_transfer_ownership::process(ctx, new_owner)
-    }
+    // pub fn transfer_ownership(ctx: Context<TransferOwnership>, new_owner: Pubkey) -> Result<()> {
+    //     handler_transfer_ownership::process(ctx, new_owner)
+    // }
 
-    pub fn reward_user_once(
-        ctx: Context<RewardUserOnce>,
-        reward_index: u64,
-        amount: u64,
-    ) -> Result<()> {
-        handler_reward_user_once::process(ctx, reward_index, amount)
-    }
+    // pub fn reward_user_once(
+    //     ctx: Context<RewardUserOnce>,
+    //     reward_index: u64,
+    //     amount: u64,
+    // ) -> Result<()> {
+    //     handler_reward_user_once::process(ctx, reward_index, amount)
+    // }
 
-    pub fn refresh_farm(ctx: Context<RefreshFarm>) -> Result<()> {
-        handler_refresh_farm::process(ctx)
-    }
+    // pub fn refresh_farm(ctx: Context<RefreshFarm>) -> Result<()> {
+    //     handler_refresh_farm::process(ctx)
+    // }
 
-    pub fn stake(ctx: Context<Stake>, amount: u64) -> Result<()> {
-        handler_stake::process(ctx, amount)
-    }
+    // pub fn stake(ctx: Context<Stake>, amount: u64) -> Result<()> {
+    //     handler_stake::process(ctx, amount)
+    // }
 
-    pub fn set_stake_delegated(ctx: Context<SetStakeDelegated>, new_amount: u64) -> Result<()> {
-        handler_set_stake_delegated::process(ctx, new_amount)
-    }
+    // pub fn set_stake_delegated(ctx: Context<SetStakeDelegated>, new_amount: u64) -> Result<()> {
+    //     handler_set_stake_delegated::process(ctx, new_amount)
+    // }
 
-    pub fn harvest_reward(ctx: Context<HarvestReward>, reward_index: u64) -> Result<()> {
-        handler_harvest_reward::process(ctx, reward_index)
-    }
+    // pub fn harvest_reward(ctx: Context<HarvestReward>, reward_index: u64) -> Result<()> {
+    //     handler_harvest_reward::process(ctx, reward_index)
+    // }
 
-    pub fn unstake(ctx: Context<Unstake>, stake_shares_scaled: u128) -> Result<()> {
-        handler_unstake::process(ctx, Decimal::from_scaled_val(stake_shares_scaled))
-    }
+    // pub fn unstake(ctx: Context<Unstake>, stake_shares_scaled: u128) -> Result<()> {
+    //     handler_unstake::process(ctx, Decimal::from_scaled_val(stake_shares_scaled))
+    // }
 
-    pub fn refresh_user_state(ctx: Context<RefreshUserState>) -> Result<()> {
-        handler_refresh_user_state::process(ctx)
-    }
+    // pub fn refresh_user_state(ctx: Context<RefreshUserState>) -> Result<()> {
+    //     handler_refresh_user_state::process(ctx)
+    // }
 
-    pub fn withdraw_unstaked_deposits(ctx: Context<WithdrawUnstakedDeposits>) -> Result<()> {
-        handler_withdraw_unstaked_deposits::process(ctx)
-    }
+    // pub fn withdraw_unstaked_deposits(ctx: Context<WithdrawUnstakedDeposits>) -> Result<()> {
+    //     handler_withdraw_unstaked_deposits::process(ctx)
+    // }
 
-    pub fn withdraw_treasury(ctx: Context<WithdrawTreasury>, amount: u64) -> Result<()> {
-        handler_withdraw_treasury::process(ctx, amount)
-    }
+    // pub fn withdraw_treasury(ctx: Context<WithdrawTreasury>, amount: u64) -> Result<()> {
+    //     handler_withdraw_treasury::process(ctx, amount)
+    // }
 
-    pub fn deposit_to_farm_vault(ctx: Context<DepositToFarmVault>, amount: u64) -> Result<()> {
-        handler_deposit_to_farm_vault::process(ctx, amount)
-    }
+    // pub fn deposit_to_farm_vault(ctx: Context<DepositToFarmVault>, amount: u64) -> Result<()> {
+    //     handler_deposit_to_farm_vault::process(ctx, amount)
+    // }
 
-    pub fn withdraw_from_farm_vault(
-        ctx: Context<WithdrawFromFarmVault>,
-        amount: u64,
-    ) -> Result<()> {
-        handler_withdraw_from_farm_vault::process(ctx, amount)
-    }
+    // pub fn withdraw_from_farm_vault(
+    //     ctx: Context<WithdrawFromFarmVault>,
+    //     amount: u64,
+    // ) -> Result<()> {
+    //     handler_withdraw_from_farm_vault::process(ctx, amount)
+    // }
 
-    pub fn withdraw_slashed_amount(ctx: Context<WithdrawSlashedAmount>) -> Result<()> {
-        handler_withdraw_slashed_amount::process(ctx)
-    }
+    // pub fn withdraw_slashed_amount(ctx: Context<WithdrawSlashedAmount>) -> Result<()> {
+    //     handler_withdraw_slashed_amount::process(ctx)
+    // }
 
-    pub fn update_farm_admin(ctx: Context<UpdateFarmAdmin>) -> Result<()> {
-        handler_update_farm_admin::process(ctx)
-    }
+    // pub fn update_farm_admin(ctx: Context<UpdateFarmAdmin>) -> Result<()> {
+    //     handler_update_farm_admin::process(ctx)
+    // }
 
-    pub fn update_global_config_admin(ctx: Context<UpdateGlobalConfigAdmin>) -> Result<()> {
-        handler_update_global_config_admin::process(ctx)
-    }
+    // pub fn update_global_config_admin(ctx: Context<UpdateGlobalConfigAdmin>) -> Result<()> {
+    //     handler_update_global_config_admin::process(ctx)
+    // }
 
-    pub fn withdraw_reward(
-        ctx: Context<WithdrawReward>,
-        amount: u64,
-        reward_index: u64,
-    ) -> Result<()> {
-        handler_withdraw_reward::process(ctx, amount, reward_index)
-    }
+    // pub fn withdraw_reward(
+    //     ctx: Context<WithdrawReward>,
+    //     amount: u64,
+    //     reward_index: u64,
+    // ) -> Result<()> {
+    //     handler_withdraw_reward::process(ctx, amount, reward_index)
+    // }
 
-    pub fn idl_missing_types(
-        _ctx: Context<UpdateGlobalConfig>,
-        _global_config_option_kind: GlobalConfigOption,
-        _farm_config_option_kind: FarmConfigOption,
-        _time_unit: TimeUnit,
-        _locking_mode: LockingMode,
-        _reward_type: RewardType,
-    ) -> Result<()> {
-        unreachable!("This should never be called")
-    }
+    // pub fn idl_missing_types(
+    //     _ctx: Context<UpdateGlobalConfig>,
+    //     _global_config_option_kind: GlobalConfigOption,
+    //     _farm_config_option_kind: FarmConfigOption,
+    //     _time_unit: TimeUnit,
+    //     _locking_mode: LockingMode,
+    //     _reward_type: RewardType,
+    // ) -> Result<()> {
+    //     unreachable!("This should never be called")
+    // }
 }
 
 #[error_code]
