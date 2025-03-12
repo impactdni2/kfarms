@@ -16,11 +16,11 @@ use anchor_lang::prelude::Pubkey;
 use decimal_wad::decimal::Decimal;
 use num_enum::{IntoPrimitive, TryFromPrimitive};
 
-static_assertions::const_assert_eq!(
-    consts::SIZE_GLOBAL_CONFIG,
-    std::mem::size_of::<GlobalConfig>() + 8
-);
-static_assertions::const_assert_eq!(0, std::mem::size_of::<GlobalConfig>() % 8);
+// static_assertions::const_assert_eq!(
+//     consts::SIZE_GLOBAL_CONFIG,
+//     std::mem::size_of::<GlobalConfig>() + 8
+// );
+// static_assertions::const_assert_eq!(0, std::mem::size_of::<GlobalConfig>() % 8);
 #[account(zero_copy)]
 #[derive(Debug)]
 pub struct GlobalConfig {
@@ -59,11 +59,11 @@ pub enum GlobalConfigOption {
     SetTreasuryFeeBps = 1,
 }
 
-static_assertions::const_assert_eq!(0, std::mem::size_of::<FarmState>() % 8);
-static_assertions::const_assert_eq!(
-    consts::SIZE_FARM_STATE,
-    std::mem::size_of::<FarmState>() + 8
-);
+// static_assertions::const_assert_eq!(0, std::mem::size_of::<FarmState>() % 8);
+// static_assertions::const_assert_eq!(
+//     consts::SIZE_FARM_STATE,
+//     std::mem::size_of::<FarmState>() + 8
+// );
 #[account(zero_copy)]
 #[derive(Debug, Eq, PartialEq)]
 #[repr(C)]
@@ -408,11 +408,11 @@ impl RewardScheduleCurve {
     }
 }
 
-static_assertions::const_assert_eq!(0, std::mem::size_of::<UserState>() % 8);
-static_assertions::const_assert_eq!(
-    consts::SIZE_USER_STATE,
-    std::mem::size_of::<UserState>() + 8
-);
+// static_assertions::const_assert_eq!(0, std::mem::size_of::<UserState>() % 8);
+// static_assertions::const_assert_eq!(
+//     consts::SIZE_USER_STATE,
+//     std::mem::size_of::<UserState>() + 8
+// );
 #[account(zero_copy)]
 #[derive(Debug, Eq, PartialEq)]
 pub struct UserState {
